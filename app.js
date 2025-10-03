@@ -1,0 +1,295 @@
+const { useState, useEffect } = React;
+
+// Team data
+const teamMembers = [
+  {
+    name: "HARSHINI",
+    role: "Cybersecurity",
+    quote: "In a data-driven world, the strongest algorithm is the one built on an unbreakable foundation of security and integrity.",
+    description: "At the intersection of AI and retail, security is paramount. Harshini's expertise is integral to the integrity of our machine learning models. She architects secure data pipelines to protect sensitive customer information and fortifies our algorithms against adversarial attacks. Her work ensures our AI solutions are not just powerful, but fundamentally safe, robust, and trustworthy.",
+    image: "harshini-photo.png"
+  },
+  {
+    name: "TARUN KM",
+    role: "AIIIOT with Vision/OpenCV",
+    quote: "The next frontier of retail analytics isn't just online data; it's about giving physical stores the ability to see, understand, and react in real-time.",
+    description: "Tarun spearheads our innovation in the physical retail space by integrating AI with IoT and Computer Vision. He develops systems that analyze in-store customer behavior, automate inventory tracking through shelf monitoring, and enable next-gen concepts like frictionless checkout. His work bridges the gap between the digital and physical worlds, offering clients a truly unified view of their operations.",
+    image: "tarun-photo.png"
+  },
+  {
+    name: "GOUTHAMARVIND V",
+    role: "Machine Learning",
+    quote: "Data is the raw material, but the algorithm is the craft. It's how we shape vast information into precise, predictive intelligence.",
+    description: "As a core architect of our intelligence engine, Gouthamarvind designs and implements the sophisticated machine learning models that power our platform. He specializes in developing predictive algorithms for complex retail challenges like demand forecasting and price optimization. His focus is on maximizing model accuracy to deliver state-of-the-art performance and tangible results.",
+    image: "gouthamarvind-photo.png"
+  },
+  {
+    name: "KEERTHI",
+    role: "Frontend",
+    quote: "The true power of an algorithm is unlocked not by its complexity, but by the simplicity and elegance of the interface through which it is presented.",
+    description: "Keerthi is responsible for translating our complex AI insights into intuitive and powerful user experiences. She specializes in crafting the client-facing dashboards and data visualizations that make our machine learning models accessible and actionable. Her expertise ensures our clients can effortlessly interact with their data and make critical business decisions with clarity and confidence.",
+    image: "keerthi-photo.png"
+  },
+  {
+    name: "PREETHI",
+    role: "Website & Data Analyst",
+    quote: "Data tells a story. My role is to listen carefully and translate that story into a clear, actionable path for business growth.",
+    description: "As the foundation of our machine learning process, Preethi transforms raw retail data into refined, intelligent fuel for our models. She specializes in data cleaning, exploratory analysis, and identifying key patterns that drive predictive accuracy. Her meticulous work in structuring complex datasets is essential to building the powerful and reliable AI solutions our clients depend on.",
+    image: "preethi-photo.png"
+  },
+  {
+    name: "DHRITI ARCOT GIRIDHAR",
+    role: "All-Rounder",
+    quote: "A brilliant idea is just the starting point. True innovation happens in the execution—by bridging the gap between the code and the customer.",
+    description: "As a versatile link between our technical and strategic teams, Dhriti ensures our operations run with seamless efficiency. Her role encompasses product management, client relations, and strategic planning, guaranteeing our innovative AI solutions are perfectly aligned with our clients' business objectives. Dhriti's agility and holistic oversight are key to transforming great ideas into market-ready products.",
+    image: "dhriti-photo.png"
+  },
+  {
+    name: "HARISH BALAJI",
+    role: "Sales & Marketing",
+    quote: "We don't sell AI; we sell our clients a competitive advantage. We provide a clear path to smarter decisions, greater efficiency, and increased profitability.",
+    description: "Harish serves as the crucial bridge between our advanced AI technology and the business goals of our clients. He specializes in articulating the value of our solutions, translating complex capabilities into clear, measurable ROI. By understanding the unique challenges of the retail sector, he forges strategic partnerships and drives the growth of Billiance AI.",
+    image: "harish-photo.png"
+  }
+];
+
+// Header Component
+const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+    <header className="header">
+      <nav className="nav">
+        <div className="nav-brand">
+          <img src="assets/logo.png" alt="Billiance AI Logo" className="logo-icon" />
+          <span className="logo-text">billiance ai</span>
+        </div>
+        <ul className={`nav-menu ${isMobileMenuOpen ? 'nav-menu--open' : ''}`}>
+          <li><button onClick={() => scrollToSection('team')} className="nav-link">Team</button></li>
+          <li><button onClick={() => scrollToSection('vision')} className="nav-link">Pricing</button></li>
+          <li><button onClick={() => scrollToSection('footer')} className="nav-link">Company</button></li>
+        </ul>
+        <button 
+          className="mobile-menu-toggle" 
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+      <div className="header-banner">
+        <div className="team-photo-bg">
+          <img src="assets/team-banner.png" alt="Team Banner" className="team-banner-img" />
+          <div className="banner-overlay">
+            <h1 className="banner-title">BILLIANCE AI</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+// Hero Section Component
+const HeroSection = () => {
+  return (
+    <section className="hero-section" id="hero">
+      <div className="container">
+        <div className="hero-content">
+          <div className="hero-left">
+            <h1 className="hero-title">
+              THE MINDS BEHIND THE <span className="mission-text">MISSION.</span>
+            </h1>
+            <div className="hero-image-container">
+              <div className="hero-image-wrapper">
+                <img src="assets/harshini-photo.png" alt="Harshini" className="hero-image" />
+                <div className="image-logo-overlay">
+                  <img src="assets/logo.png" alt="Billiance AI" className="overlay-logo" />
+                  <span className="overlay-text">BILLIANCE AI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="hero-right">
+            <p className="hero-description">
+              Technology is only as brilliant as the people behind it. Meet the 
+              dedicated strategists, engineers, and data scientists who share a unified 
+              passion: leveraging AI to build the future of retail.
+            </p>
+            <button className="cta-button">MEET THE TEAM</button>
+            
+            <div className="hero-member-intro">
+              <h2 className="member-name">HARSHINI</h2>
+              <h3 className="member-role">Cybersecurity</h3>
+              <p className="member-description">
+                "In a data-driven world, the strongest algorithm is the one built on an 
+                unbreakable foundation of security and integrity."
+              </p>
+              <p className="member-detail">
+                At the intersection of AI and retail, security is paramount. Harshini's 
+                expertise is integral to the integrity of our machine learning models. 
+                She architects secure data pipelines to protect sensitive customer 
+                information and fortifies our algorithms against adversarial attacks. Her 
+                work ensures our AI solutions are not just powerful, but fundamentally 
+                safe, robust, and trustworthy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Vision Section Component
+const VisionSection = () => {
+  return (
+    <section className="vision-section" id="vision">
+      <div className="vision-banner">
+        <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="vision-banner-img" />
+        <div className="vision-overlay">
+          <h1 className="vision-title">BILLIANCE AI</h1>
+        </div>
+      </div>
+      
+      <div className="container">
+        <div className="vision-content">
+          <div className="vision-left">
+            <h2 className="vision-heading">
+              HAVE A VISION?<br />
+              LET'S MAKE IT<br />
+              <span className="vision-italic">Into Reality.</span>
+            </h2>
+          </div>
+          <div className="vision-right">
+            <p className="vision-description">
+              We are a team of innovators dedicated to solving the 
+              most complex challenges in retail. If you have a vision for 
+              your business, we have the deep technical expertise in AI 
+              and machine learning to bring it to life.
+            </p>
+            <button className="cta-button">
+              Let's Create <span className="arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Team Member Component
+const TeamMember = ({ member, isReverse, index }) => {
+  return (
+    <section className={`team-member ${isReverse ? 'team-member--reverse' : ''}`} id={`member-${index}`}>
+      <div className="container">
+        <div className="team-member-content">
+          <div className="team-member-image">
+            <div className="team-image-wrapper">
+              <img src={`assets/${member.image}`} alt={member.name} className="member-image" />
+              <div className="image-logo-overlay">
+                <img src="assets/logo.png" alt="Billiance AI" className="overlay-logo" />
+                <span className="overlay-text">BILLIANCE AI</span>
+              </div>
+            </div>
+          </div>
+          <div className="team-member-info">
+            <h2 className="member-name">{member.name}</h2>
+            <h3 className="member-role">{member.role}</h3>
+            <blockquote className="member-quote">"{member.quote}"</blockquote>
+            <p className="member-description">{member.description}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Company Section Component
+const CompanySection = () => {
+  return (
+    <section className="company-section" id="company">
+      <div className="company-banner">
+        <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="company-banner-img" />
+        <div className="company-overlay">
+          <h1 className="company-title">BILLIANCE AI</h1>
+        </div>
+      </div>
+      
+      <div className="container">
+        <div className="company-content">
+          <div className="company-left">
+            <p className="company-description">
+              At Billiance AI, we develop intelligent machine learning solutions for the retail industry. To 
+              pioneer the next generation of advanced technology, we're building a team of dedicated 
+              innovators. These are the core members driving our vision and creating lasting value.
+            </p>
+          </div>
+          <div className="company-right">
+            <button className="cta-button">
+              Explore Price <span className="arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Footer Component
+const Footer = () => {
+  return (
+    <footer className="footer" id="footer">
+      <div className="footer-container">
+        <div className="footer-art">
+          <div className="footer-background">
+            <div className="footer-title">BILLIANCE AI</div>
+            <div className="footer-graphic"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Main App Component
+const App = () => {
+  return (
+    <div className="app">
+      <Header />
+      <HeroSection />
+      <VisionSection />
+      
+      <div id="team">
+        {teamMembers.slice(1).map((member, index) => (
+          <TeamMember 
+            key={member.name} 
+            member={member} 
+            isReverse={index % 2 === 1}
+            index={index + 1}
+          />
+        ))}
+      </div>
+      
+      <CompanySection />
+      <Footer />
+    </div>
+  );
+};
+
+// Render the app
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
