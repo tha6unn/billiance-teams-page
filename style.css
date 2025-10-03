@@ -1039,9 +1039,10 @@ body {
 }
 
 .vision-banner-img {
-  width: 70%;
+  width: 90%;
   height: 100%;
   object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -1073,6 +1074,8 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: var(--space-32);
   align-items: start;
+  margin-top: 8%;
+  margin-bottom: 3%;
 }
 
 .vision-heading {
