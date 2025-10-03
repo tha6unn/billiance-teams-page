@@ -94,9 +94,6 @@ const Header = () => {
       <div className="header-banner">
         <div className="team-photo-bg">
           <img src="assets/team-banner.png" alt="Team Banner" className="team-banner-img" />
-          <div className="banner-overlay">
-            <h1 className="banner-title">BILLIANCE AI</h1>
-          </div>
         </div>
       </div>
     </header>
