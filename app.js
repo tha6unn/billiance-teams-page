@@ -122,73 +122,58 @@ const Header = () => {
 };
 
 // Hero Section Component
-const HeroSection = () => {
-  return (
-    <section className="hero-section" id="hero">
-      <div className="container">
-        <div className="hero-content">
-          <div className="hero-left">
-            <h1 className="hero-title">
-              THE MINDS 
-            </h1>
-            <h1>
-              BEHIND THE 
-            </h1>
-            <span className="mission-text">MISSION.</span>
-          </div>
-          <div className="hero-right">
-            <p className="hero-description">
-              Technology is only as brilliant as the people behind it. Meet the 
-              dedicated strategists, engineers, and data scientists who share a unified 
-              passion: leveraging AI to build the future of retail.
-            </p>
-            <button className="cta-button">MEET THE TEAM</button>
-            
-            
-
-
-
-
-          </div>
+const HeroSection = ({ scrollToSection }) => (
+  <section className="hero-section" id="hero">
+    <div className="container">
+      <div className="hero-content">
+        <div className="hero-left">
+          <h1 className="hero-title">THE MINDS</h1>
+          <h1>BEHIND THE</h1>
+          <span className="mission-text">MISSION.</span>
+        </div>
+        <div className="hero-right">
+          <p className="hero-description">
+            Technology is only as brilliant as the people behind it. Meet the dedicated strategists, engineers, and data scientists who share a unified passion: leveraging AI to build the future of retail.
+          </p>
+          <button className="cta-button" onClick={() => scrollToSection('team')}>
+            MEET THE TEAM
+          </button>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
-// Vision Section Component
-const VisionSection = () => {
-  return (
-    <section className="vision-section" id="vision">
-      <div className="vision-banner">
-        <img src="assets/team-banner.png" alt="Billiance AI Team" className="vision-banner-img" />
-      </div>
-      
-      <div className="container">
-        <div className="vision-content">
-          <div className="vision-left">
-            <h2 className="vision-heading">
-              HAVE A VISION?<br />
-              LET'S MAKE IT<br />
-              <span className="vision-italic">Into Reality.</span>
-            </h2>
-          </div>
-          <div className="vision-right">
-            <p className="vision-description">
-              We are a team of innovators dedicated to solving the 
-              most complex challenges in retail. If you have a vision for 
-              your business, we have the deep technical expertise in AI 
-              and machine learning to bring it to life.
-            </p>
-            <button className="cta-button">
-              Let's Create <span className="arrow">→</span>
-            </button>
-          </div>
+// Similarly for VisionSection:
+
+const VisionSection = ({ scrollToSection }) => (
+  <section className="vision-section" id="vision">
+    <div className="vision-banner">
+      <img src="assets/team-banner.png" alt="Billiance AI Team" className="vision-banner-img" />
+    </div>
+
+    <div className="container">
+      <div className="vision-content">
+        <div className="vision-left">
+          <h2 className="vision-heading">
+            HAVE A VISION?<br />
+            LET'S MAKE IT<br />
+            <span className="vision-italic">Into Reality.</span>
+          </h2>
+        </div>
+        <div className="vision-right">
+          <p className="vision-description">
+            We are a team of innovators dedicated to solving the most complex challenges in retail. If you have a vision for your business, we have the deep technical expertise in AI and machine learning to bring it to life.
+          </p>
+          <button className="cta-button" onClick={() => scrollToSection('pricing')}>
+            Let's Create <span className="arrow">→</span>
+          </button>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
+
 
 
 const BillImg = () => {
@@ -230,29 +215,33 @@ const TeamMember = ({ member, isReverse, index }) => {
 
 // Main App Component
 const App = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="app">
       <Header />
       <BillImg />
-      <HeroSection />
-      
-      
+      <HeroSection scrollToSection={scrollToSection} />
       <div id="team">
-        {teamMembers.slice(0).map((member, index) => (
-          <TeamMember 
-            key={member.name} 
-            member={member} 
+        {teamMembers.map((member, index) => (
+          <TeamMember
+            key={member.name}
+            member={member}
             isReverse={index % 2 === 1}
-            index={index + 1 }
+            index={index + 1}
           />
         ))}
       </div>
-      <br />
-      <br />
-      <VisionSection />
+      <VisionSection scrollToSection={scrollToSection} />
     </div>
   );
 };
+
 
 // Render the app
 const root = ReactDOM.createRoot(document.getElementById('root'));

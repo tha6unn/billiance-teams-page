@@ -922,6 +922,14 @@ body {
   object-fit: cover;
 }
 
+.hero-image,
+.team-image-wrapper,
+.team-member-image,
+.company-banner-img {
+  max-width: 100%;
+  height: auto;
+}
+
 .image-logo-overlay {
   position: absolute;
   top: var(--space-20);
@@ -1267,6 +1275,15 @@ body {
   
   .nav {
     padding: var(--space-16);
+  }
+
+  .nav-link {
+    font-size: var(--font-size-md);
+    padding: var(--space-8) 0;
+  }
+
+   .btn--full-width {
+    width: 100%;
   }
   
   .nav-menu {
