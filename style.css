@@ -814,6 +814,7 @@ body {
 .nav-link {
   background: none;
   border: none;
+  font-family: var(--font-family-base);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   color: var(--color-text);
@@ -851,6 +852,7 @@ body {
   position: relative;
   height: 300px;
   overflow: hidden;
+  margin-top: 3%;
 }
 
 .team-photo-bg {
@@ -860,7 +862,7 @@ body {
 }
 
 .team-banner-img {
-  width: 80%;
+  width: 90%;
   height: 100%;
   object-fit: cover;
   filter: grayscale(100%) contrast(1.2);
@@ -869,28 +871,6 @@ body {
   margin-right: auto;
 }
 
-
-.banner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--color-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.banner-title {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-white);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-tight);
-  text-align: center;
-  line-height: var(--line-height-tight);
-}
 
 /* Rest of the styles are exactly as in the original file... */
 /* Hero Section Styles */
@@ -910,7 +890,7 @@ body {
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  margin-bottom: var(--space-32);
+  
   color: var(--color-text);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-tight);
@@ -920,6 +900,7 @@ body {
   font-family: var(--font-times);
   font-style: italic;
   font-weight: var(--font-weight-normal);
+  font-size: 170%;
 }
 
 .hero-image-container {
@@ -1026,7 +1007,7 @@ body {
   font-style: italic;
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-20);
-  color: var(--color-text-secondary);
+  color: var(--color-black);
 }
 
 .member-description,
@@ -1042,6 +1023,14 @@ body {
   background: var(--color-background);
 }
 
+.vision-section1 {
+  padding: 0 0 var(--space-32) 0;
+  background: var(--color-background);
+  margin-top: 10%;
+}
+
+
+
 .vision-banner {
   position: relative;
   height: 400px;
@@ -1050,22 +1039,23 @@ body {
 }
 
 .vision-banner-img {
-  width: 100%;
+  width: 70%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) contrast(1.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.vision-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--color-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.vision-banner-img1 {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--space-20);
+  margin-bottom: var(--space-20);
 }
 
 .vision-title {
@@ -1208,7 +1198,7 @@ body {
 }
 
 .company-description {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   line-height: var(--line-height-normal);
   color: var(--color-text);
 }

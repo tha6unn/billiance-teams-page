@@ -11,7 +11,7 @@ const teamMembers = [
   },
   {
     name: "TARUN KM",
-    role: "AIIIOT with Vision/OpenCV",
+    role: "AI / IOT with Vision/OpenCV",
     quote: "The next frontier of retail analytics isn't just online data; it's about giving physical stores the ability to see, understand, and react in real-time.",
     description: "Tarun spearheads our innovation in the physical retail space by integrating AI with IoT and Computer Vision. He develops systems that analyze in-store customer behavior, automate inventory tracking through shelf monitoring, and enable next-gen concepts like frictionless checkout. His work bridges the gap between the digital and physical worlds, offering clients a truly unified view of their operations.",
     image: "tarun-photo.png"
@@ -96,6 +96,27 @@ const Header = () => {
           <img src="assets/team-banner.png" alt="Team Banner" className="team-banner-img" />
         </div>
       </div>
+      <p>
+      </p>
+      <p>
+        <br />
+      </p>
+      <div className="container">
+        <div className="company-content">
+          <div className="company-left">
+            <p className="company-description">
+              At Billiance AI, we develop intelligent machine learning solutions for the retail industry. To 
+              pioneer the next generation of advanced technology, we're building a team of dedicated 
+              innovators. These are the core members driving our vision and creating lasting value.
+            </p>
+          </div>
+          <div className="company-right">
+            <button className="cta-button">
+              Explore Price <span className="arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
@@ -108,17 +129,12 @@ const HeroSection = () => {
         <div className="hero-content">
           <div className="hero-left">
             <h1 className="hero-title">
-              THE MINDS BEHIND THE <span className="mission-text">MISSION.</span>
+              THE MINDS 
             </h1>
-            <div className="hero-image-container">
-              <div className="hero-image-wrapper">
-                <img src="assets/harshini-photo.png" alt="Harshini" className="hero-image" />
-                <div className="image-logo-overlay">
-                  <img src="assets/logo.png" alt="Billiance AI" className="overlay-logo" />
-                  <span className="overlay-text">BILLIANCE AI</span>
-                </div>
-              </div>
-            </div>
+            <h1>
+              BEHIND THE 
+            </h1>
+            <span className="mission-text">MISSION.</span>
           </div>
           <div className="hero-right">
             <p className="hero-description">
@@ -128,22 +144,11 @@ const HeroSection = () => {
             </p>
             <button className="cta-button">MEET THE TEAM</button>
             
-            <div className="hero-member-intro">
-              <h2 className="member-name">HARSHINI</h2>
-              <h3 className="member-role">Cybersecurity</h3>
-              <p className="member-description">
-                "In a data-driven world, the strongest algorithm is the one built on an 
-                unbreakable foundation of security and integrity."
-              </p>
-              <p className="member-detail">
-                At the intersection of AI and retail, security is paramount. Harshini's 
-                expertise is integral to the integrity of our machine learning models. 
-                She architects secure data pipelines to protect sensitive customer 
-                information and fortifies our algorithms against adversarial attacks. Her 
-                work ensures our AI solutions are not just powerful, but fundamentally 
-                safe, robust, and trustworthy.
-              </p>
-            </div>
+            
+
+
+
+
           </div>
         </div>
       </div>
@@ -156,10 +161,7 @@ const VisionSection = () => {
   return (
     <section className="vision-section" id="vision">
       <div className="vision-banner">
-        <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="vision-banner-img" />
-        <div className="vision-overlay">
-          <h1 className="vision-title">BILLIANCE AI</h1>
-        </div>
+        <img src="assets/team-banner.png" alt="Billiance AI Team" className="vision-banner-img" />
       </div>
       
       <div className="container">
@@ -188,6 +190,17 @@ const VisionSection = () => {
   );
 };
 
+
+const BillImg = () => {
+  return (
+    <section className="vision-section1" id="vision1">
+      <div className="vision-banner1">
+        <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="vision-banner-img1" />
+      </div>
+    </section>
+  );
+};
+
 // Team Member Component
 const TeamMember = ({ member, isReverse, index }) => {
   return (
@@ -197,10 +210,6 @@ const TeamMember = ({ member, isReverse, index }) => {
           <div className="team-member-image">
             <div className="team-image-wrapper">
               <img src={`assets/${member.image}`} alt={member.name} className="member-image" />
-              <div className="image-logo-overlay">
-                <img src="assets/logo.png" alt="Billiance AI" className="overlay-logo" />
-                <span className="overlay-text">BILLIANCE AI</span>
-              </div>
             </div>
           </div>
           <div className="team-member-info">
@@ -216,73 +225,31 @@ const TeamMember = ({ member, isReverse, index }) => {
 };
 
 // Company Section Component
-const CompanySection = () => {
-  return (
-    <section className="company-section" id="company">
-      <div className="company-banner">
-        <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="company-banner-img" />
-        <div className="company-overlay">
-          <h1 className="company-title">BILLIANCE AI</h1>
-        </div>
-      </div>
-      
-      <div className="container">
-        <div className="company-content">
-          <div className="company-left">
-            <p className="company-description">
-              At Billiance AI, we develop intelligent machine learning solutions for the retail industry. To 
-              pioneer the next generation of advanced technology, we're building a team of dedicated 
-              innovators. These are the core members driving our vision and creating lasting value.
-            </p>
-          </div>
-          <div className="company-right">
-            <button className="cta-button">
-              Explore Price <span className="arrow">→</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 // Footer Component
-const Footer = () => {
-  return (
-    <footer className="footer" id="footer">
-      <div className="footer-container">
-        <div className="footer-art">
-          <div className="footer-background">
-            <div className="footer-title">BILLIANCE AI</div>
-            <div className="footer-graphic"></div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
+
 
 // Main App Component
 const App = () => {
   return (
     <div className="app">
       <Header />
+      <BillImg />
       <HeroSection />
-      <VisionSection />
+      
       
       <div id="team">
-        {teamMembers.slice(1).map((member, index) => (
+        {teamMembers.slice(0).map((member, index) => (
           <TeamMember 
             key={member.name} 
             member={member} 
             isReverse={index % 2 === 1}
-            index={index + 1}
+            index={index + 1 }
           />
         ))}
       </div>
-      
-      <CompanySection />
-      <Footer />
+      <br />
+      <br />
+      <VisionSection />
     </div>
   );
 };
