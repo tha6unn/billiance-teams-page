@@ -70,7 +70,7 @@ const Header = () => {
       <nav className="nav">
         <div className="nav-brand">
           <img src="assets/logo.png" alt="Billiance AI Logo" className="logo-icon" />
-          <span className="logo-text">billiance ai</span>
+          <span className="logo-text">billianceai</span>
         </div>
         <div className="nav-dropdown">
           <button
