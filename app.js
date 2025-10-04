@@ -57,15 +57,11 @@ const teamMembers = [
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
 
@@ -76,44 +72,46 @@ const Header = () => {
           <img src="assets/logo.png" alt="Billiance AI Logo" className="logo-icon" />
           <span className="logo-text">billiance ai</span>
         </div>
-        <ul className={`nav-menu ${isMobileMenuOpen ? 'nav-menu--open' : ''}`}>
-          <li><button onClick={() => scrollToSection('team')} className="nav-link">Team</button></li>
-          <li><button onClick={() => scrollToSection('vision')} className="nav-link">Pricing</button></li>
-          <li><button onClick={() => scrollToSection('footer')} className="nav-link">Company</button></li>
-        </ul>
-        <button 
-          className="mobile-menu-toggle" 
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="nav-dropdown">
+          <button
+            className="dropdown-toggle"
+            onClick={() =>
+              document
+              .querySelector('.dropdown-menu')
+              .classList.toggle('dropdown-menu--open')
+            }
+          >
+            ☰
+          </button>
+          <ul className="dropdown-menu">
+            <li><button onClick={() => scrollToSection('team')}>Home</button></li>
+            <li><button onClick={() => scrollToSection('vision')}>Pricing</button></li>
+            <li><button onClick={() => scrollToSection('footer')}>Company</button></li>
+          </ul>
+        </div>
+        
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+          <span></span><span></span><span></span>
         </button>
       </nav>
+
       <div className="header-banner">
         <div className="team-photo-bg">
           <img src="assets/team-banner.png" alt="Team Banner" className="team-banner-img" />
         </div>
       </div>
-      <p>
-      </p>
-      <p>
-        <br />
-      </p>
+
       <div className="container">
         <div className="company-content">
           <div className="company-left">
             <p className="company-description">
-              At Billiance AI, we develop intelligent machine learning solutions for the retail industry. To 
-              pioneer the next generation of advanced technology, we're building a team of dedicated 
-              innovators. These are the core members driving our vision and creating lasting value.
+              At Billiance AI, we develop intelligent machine learning solutions for the retail industry.
+              To pioneer the next generation of advanced technology, we're building a team of dedicated innovators.
+              These are the core members driving our vision and creating lasting value.
             </p>
           </div>
           <div className="company-right">
-            <button className="cta-button">
-              Explore Price <span className="arrow">→</span>
-            </button>
+            <button className="cta-button">Explore Price <span className="arrow">→</span></button>
           </div>
         </div>
       </div>
@@ -121,30 +119,32 @@ const Header = () => {
   );
 };
 
-// Hero Section Component
+// Hero Section
 const HeroSection = ({ scrollToSection }) => (
   <section className="hero-section" id="hero">
     <div className="container">
-      <div className="hero-content">
-        <div className="hero-left">
-          <h1 className="hero-title">THE MINDS</h1>
-          <h1>BEHIND THE</h1>
-          <span className="mission-text">MISSION.</span>
+      <div className="vision-content">
+        <div className="vision-left">
+          <h2 className="vision-heading">
+            THE MINDS<br />BEHIND THE<br />
+            <span className="vision-italic">MISSION.</span>
+          </h2>
         </div>
-        <div className="hero-right">
-          <p className="hero-description">
-            Technology is only as brilliant as the people behind it. Meet the dedicated strategists, engineers, and data scientists who share a unified passion: leveraging AI to build the future of retail.
+        <div className="vision-right">
+          <p className="vision-description">
+            Technology is only as brilliant as the people behind it.
+            Meet the dedicated strategists, engineers, and data scientists who share a unified passion:
+            leveraging AI to build the future of retail.
           </p>
-          <button className="cta-button" onClick={() => scrollToSection('team')}>
-            MEET THE TEAM
+          <button className="cta-button" onClick={() => scrollToSection('pricing')}>
+            MEET THE TEAM <span className="arrow">→</span>
           </button>
         </div>
       </div>
     </div>
+    
   </section>
 );
-
-// Similarly for VisionSection:
 
 const VisionSection = ({ scrollToSection }) => (
   <section className="vision-section" id="vision">
@@ -156,14 +156,14 @@ const VisionSection = ({ scrollToSection }) => (
       <div className="vision-content">
         <div className="vision-left">
           <h2 className="vision-heading">
-            HAVE A VISION?<br />
-            LET'S MAKE IT<br />
+            HAVE A VISION?<br />LET'S MAKE IT<br />
             <span className="vision-italic">Into Reality.</span>
           </h2>
         </div>
         <div className="vision-right">
           <p className="vision-description">
-            We are a team of innovators dedicated to solving the most complex challenges in retail. If you have a vision for your business, we have the deep technical expertise in AI and machine learning to bring it to life.
+            We are a team of innovators dedicated to solving the most complex challenges in retail.
+            If you have a vision for your business, we have the expertise to bring it to life.
           </p>
           <button className="cta-button" onClick={() => scrollToSection('pricing')}>
             Let's Create <span className="arrow">→</span>
@@ -174,52 +174,38 @@ const VisionSection = ({ scrollToSection }) => (
   </section>
 );
 
+const BillImg = () => (
+  <section className="vision-section1" id="vision1">
+    <div className="vision-banner1">
+      <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="vision-banner-img1" />
+    </div>
+  </section>
+);
 
-
-const BillImg = () => {
-  return (
-    <section className="vision-section1" id="vision1">
-      <div className="vision-banner1">
-        <img src="assets/billiance-banner.png" alt="Billiance AI Team" className="vision-banner-img1" />
-      </div>
-    </section>
-  );
-};
-
-// Team Member Component
-const TeamMember = ({ member, isReverse, index }) => {
-  return (
-    <section className={`team-member ${isReverse ? 'team-member--reverse' : ''}`} id={`member-${index}`}>
-      <div className="container">
-        <div className="team-member-content">
-          <div className="team-member-image">
-            <div className="team-image-wrapper">
-              <img src={`assets/${member.image}`} alt={member.name} className="member-image" />
-            </div>
-          </div>
-          <div className="team-member-info">
-            <h2 className="member-name">{member.name}</h2>
-            <h3 className="member-role">{member.role}</h3>
-            <blockquote className="member-quote">"{member.quote}"</blockquote>
-            <p className="member-description">{member.description}</p>
+const TeamMember = ({ member, isReverse, index }) => (
+  <section className={`team-member ${isReverse ? 'team-member--reverse' : ''}`} id={`member-${index}`}>
+    <div className="container">
+      <div className="team-member-content">
+        <div className="team-member-image">
+          <div className="team-image-wrapper">
+            <img src={`assets/${member.image}`} alt={member.name} className="member-image" />
           </div>
         </div>
+        <div className="team-member-info">
+          <h2 className="member-name">{member.name}</h2>
+          <h3 className="member-role">{member.role}</h3>
+          <blockquote className="member-quote">"{member.quote}"</blockquote>
+          <p className="member-description">{member.description}</p>
+        </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
-// Company Section Component
-// Footer Component
-
-
-// Main App Component
 const App = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -228,13 +214,8 @@ const App = () => {
       <BillImg />
       <HeroSection scrollToSection={scrollToSection} />
       <div id="team">
-        {teamMembers.map((member, index) => (
-          <TeamMember
-            key={member.name}
-            member={member}
-            isReverse={index % 2 === 1}
-            index={index + 1}
-          />
+        {teamMembers.map((m, i) => (
+          <TeamMember key={m.name} member={m} isReverse={i % 2 === 1} index={i + 1} />
         ))}
       </div>
       <VisionSection scrollToSection={scrollToSection} />
@@ -242,7 +223,5 @@ const App = () => {
   );
 };
 
-
-// Render the app
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

@@ -804,6 +804,80 @@ body {
   text-transform: lowercase;
 }
 
+/* --- Dropdown Navigation Styles --- */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  color: var(--color-black);
+  font-size: 25px; /* hamburger size */
+  cursor: pointer;
+  padding: var(--space-8) var(--space-);
+  transition: background var(--duration-normal) var(--ease-standard);
+}
+
+.dropdown-toggle:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-sm);
+}
+
+/* Dropdown box styling */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #111; /* dark visible background */
+  border: 1px solid #333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) 0;
+  min-width: 160px;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.dropdown-menu--open {
+  display: flex;
+  animation: dropdownFadeIn 0.2s ease-out;
+}
+
+/* Dropdown animation */
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Each menu item */
+.dropdown-menu li {
+  list-style: none;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #fff; /* white text visible */
+  font-size: var(--font-size-md);
+  padding: var(--space-10) var(--space-16);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
 .nav-menu {
   display: flex;
   list-style: none;
@@ -850,7 +924,7 @@ body {
 
 .header-banner {
   position: relative;
-  height: 300px;
+  height: 100%;
   overflow: hidden;
   margin-top: 3%;
 }
@@ -869,7 +943,34 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 4%;
 }
+
+.vision-banner-img {
+  max-width: 90vw;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+
+
+.vision-banner-img1{
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 
 
 /* Rest of the styles are exactly as in the original file... */
@@ -1020,7 +1121,7 @@ body {
 
 .member-description,
 .member-detail {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-xl);
   line-height: var(--line-height-normal);
   margin-bottom: var(--space-20);
 }
@@ -1041,31 +1142,13 @@ body {
 
 .vision-banner {
   position: relative;
-  height: 400px;
+  height: 440px;
   overflow: hidden;
   margin-bottom: var(--space-32);
+  width: 100%;
 }
 
-.vision-banner-img {
-  width: 90%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.2);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.vision-banner-img1 {
-  width: 80%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: var(--space-20);
-  margin-bottom: var(--space-20);
-}
 
 .vision-title {
   font-size: var(--font-size-4xl);
@@ -1136,18 +1219,24 @@ body {
 
 .team-image-wrapper {
   position: relative;
-  width: 400px;
-  height: 500px;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-secondary);
+  margin: 0 auto;
 }
+
 
 .member-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
+  display: block;
 }
+
 
 .member-quote {
   font-size: var(--font-size-lg);
@@ -1206,6 +1295,7 @@ body {
   grid-template-columns: 2fr 1fr;
   gap: var(--space-32);
   align-items: start;
+  margin: auto;
 }
 
 .company-description {
@@ -1268,242 +1358,258 @@ body {
 }
 
 /* Mobile portrait breakpoint at 480px */
-@media (max-width: 480px) {
+/* --- Responsive Redesign --- */
+/* --- FINAL RESPONSIVE FIX --- */
+
+/* Tablet & mobile view */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .container {
+    width: 100%;
     padding: 0 var(--space-16);
   }
-  
+
   .nav {
     padding: var(--space-16);
   }
 
-  .nav-link {
-    font-size: var(--font-size-md);
-    padding: var(--space-8) 0;
+  .nav-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    flex-direction: column;
+    padding: var(--space-24);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all var(--duration-normal) var(--ease-standard);
+    z-index: 999;
   }
 
-   .btn--full-width {
-    width: 100%;
+  .nav-dropdown {
+    position: absolute;
+    right: var(--space-20);
+    top: var(--space-16);
   }
-  
-  .nav-menu {
+  .dropdown-menu {
     position: fixed;
     top: 72px;
-    left: 0;
-    right: 0;
-    background: var(--color-surface);
-    flex-direction: column;
-    padding: var(--space-32) var(--space-20);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: all var(--duration-normal) var(--ease-standard);
-    z-index: 999;
-    gap: var(--space-24);
+    right: 16px;
   }
-  
+
   .nav-menu--open {
     transform: translateY(0);
     opacity: 1;
   }
-  
+
   .mobile-menu-toggle {
     display: flex;
   }
-  
-  .banner-title {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-24);
-    text-align: center;
-  }
-  
-  .hero-title {
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--space-24);
-  }
-  
-  .hero-image-wrapper {
-    width: 100%;
-    max-width: 300px;
-    height: 400px;
-    margin: 0 auto;
-  }
-  
-  .vision-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-24);
-    text-align: center;
-  }
-  
-  .vision-heading {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .vision-title {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .team-member-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-24);
-    text-align: center;
-  }
-  
-  .team-member--reverse .team-member-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .team-member--reverse .team-member-image,
-  .team-member--reverse .team-member-info {
-    order: unset;
-  }
-  
-  .team-image-wrapper {
-    width: 100%;
-    max-width: 300px;
-    height: 400px;
-    margin: 0 auto;
-  }
-  
+
+  /* Stack all content vertically */
+  .hero-content,
   .company-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-24);
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    gap: var(--space-20);
+    margin:auto
   }
-  
+
+  /* Resize titles and spacing */
+  .hero-title,
   .company-title {
     font-size: var(--font-size-3xl);
+    line-height: 1.2;
   }
-  
-  .footer-title {
-    font-size: var(--font-size-3xl);
+
+
+  .team-member-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-20);
+    flex-wrap: wrap;
+    text-align: left;
   }
-  
-  .footer-graphic {
-    width: 150px;
-    height: 150px;
+
+  /* Reverse layout still respected */
+  .team-member--reverse .team-member-content {
+    flex-direction: row-reverse;
   }
-  
-  .hero-member-intro {
-    margin-top: var(--space-24);
-    padding-top: var(--space-24);
+
+  /* Resize team member image wrapper */
+  .team-image-wrapper {
+    width: 55%;              /* was 45% */
+    max-width: 240px;        /* was 200px */
+    height: auto;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
   }
-  
+
+  /* Adjust image scaling */
+  .team-member-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .member-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  /* Text area takes the rest */
+  .team-member-info {
+    width: 50%;
+    max-width: 320px;
+    margin: 0;
+  }
+
+  /* Adjust text font sizes for mobile readability */
   .member-name {
-    font-size: var(--font-size-xl);
-  }
-  
-  .member-role {
     font-size: var(--font-size-lg);
+  }
+  .member-role {
+    font-size: var(--font-size-md);
+    font-style: italic;
+  }
+  .member-description {
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+  }
+  .member-quote {
+    font-size: var(--font-size-sm);
+    line-height: 1.3;
+  }
+
+  .mission-text {
+    font-size: 150%;
+  }
+
+  /* Responsive images */
+  
+
+  /* Adjust text sizes */
+  
+  .vision-description {
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+  }
+
+  .hero-description{
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+    
+
+  }
+
+  .header-banner {
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .team-photo-bg {
+    width: 100%;
+    height: auto;
+  }
+
+  .team-banner-img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    filter: grayscale(100%) contrast(1.1);
+  }
+
+  /* Remove space below banner */
+  .header-banner + p,
+  .header-banner + .container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .vision-banner-img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) contrast(1.1);
+  }
+
+  .vision-banner {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: var(--space-32);
+    width: 100%;
+    max-height: 240px;
+  }
+
+  .company-description {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
+    text-align: left;
+    margin-top: var(--space-32);
+    margin-bottom: auto;
+}
+
+
+
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    font-size: var(--font-size-md);
+    padding: var(--space-12) var(--space-20);
   }
 }
 
-/* Existing tablet breakpoint at 768px */
-@media (max-width: 768px) {
-  .nav {
-    padding: var(--space-20);
+/* Small phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-12);
   }
-  
-  .nav-menu {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background: var(--color-surface);
-    flex-direction: column;
-    padding: var(--space-32) var(--space-20);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: all var(--duration-normal) var(--ease-standard);
-    z-index: 999;
-  }
-  
-  .nav-menu--open {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  
-  .banner-title {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .hero-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-32);
-    text-align: center;
-  }
-  
+
   .hero-title {
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--space-32);
+    font-size: var(--font-size-2xl);
   }
-  
-  .hero-image-wrapper {
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-  
-  .vision-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-32);
-    text-align: center;
-  }
-  
-  .vision-heading {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .vision-title {
-    font-size: var(--font-size-4xl);
-  }
-  
+
   .team-member-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-32);
+    flex-direction: column;
     text-align: center;
+    align-items: center;
   }
-  
-  .team-member--reverse .team-member-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .team-member--reverse .team-member-image,
-  .team-member--reverse .team-member-info {
-    order: unset;
-  }
-  
   .team-image-wrapper {
+    max-width: 200px;        /* was 160px */
+    width: 75%;              /* was 70% */
+    aspect-ratio: 3 / 4;
+    margin-bottom: var(--space-16);
+  }
+  .team-member-info {
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    max-width: 90%;
   }
-  
-  .company-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-32);
-    text-align: center;
+
+
+  .member-name {
+    font-size: var(--font-size-lg);
   }
-  
-  .company-title {
-    font-size: var(--font-size-4xl);
-  }
-  
-  .footer-title {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .footer-graphic {
-    width: 200px;
-    height: 200px;
+
+  .cta-button {
+    font-size: var(--font-size-sm);
+    padding: var(--space-10) var(--space-16);
   }
 }
+
+
+/* Existing tablet breakpoint at 768px */
